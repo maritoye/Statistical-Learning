@@ -1,4 +1,5 @@
 # Statistical Learning Project
+Project in ACIT4510 - Statistical Learning, OsloMet
 
 Political opinions; an aspect of our lives that are so personal, yet arguably one of the most important features about us for the society to run smoothly in a democratic country. Every other year in Norway it is time for a new election. All the political parties line up in the streets months ahead in order to convince the voters that they should get their precious vote. Countless hours are spent by experts discussing on TV why they believe the voters will go for one party or another, and what will be the core cases that will turn the voters from one party to another. The news are blowing up with new polls every week, all chasing the answer for the ultimate question; who will we vote for? 
 
@@ -80,6 +81,8 @@ The figure below shows a box plot of the accuracies for the 5-fold cross validat
 | Neural network         | 0.30                    | 0.325    |
 
 Below are the confusion matrices of each of the models when predicting on the test set. From the plots, we can see that the two models with highest accuracy predicted nearly everyone to have voted for 1 and 3, meaning "Arbeiderpartiet" and "Høyre", which are in fact the two largest parties in Norway. The balances version of the SVM was the only model to predict a large range of classes for this test, however it did this at the expense of the accuracy, as this was also the model with lowest accuracy between them all. 
+
+![Confusion Matrices](/img/cm.png)
 
 ## Discussion
 When beginning this project, I already suspected that trying to accurately predict a persons political view could be a challenging task. I also encountered many unexpected challenges in this project. The main being that the dataset was not as described. It contained only half rows as it says since it was divided into two surveys, and it had tons of missing values. This led to having to spend a enormous amount of time reading each and every question in the questionnare to understand each data point, so I could choose what to do about the missing values or the Nan/"I dont know" values. 
