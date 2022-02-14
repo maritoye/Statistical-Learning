@@ -1,5 +1,6 @@
 # Statistical Learning Project
 Project in ACIT4510 - Statistical Learning, OsloMet
+Marit Øye Gjersdal, 2021
 
 Political opinions; an aspect of our lives that are so personal, yet arguably one of the most important features about us for the society to run smoothly in a democratic country. Every other year in Norway it is time for a new election. All the political parties line up in the streets months ahead in order to convince the voters that they should get their precious vote. Countless hours are spent by experts discussing on TV why they believe the voters will go for one party or another, and what will be the core cases that will turn the voters from one party to another. The news are blowing up with new polls every week, all chasing the answer for the ultimate question; who will we vote for? 
 
