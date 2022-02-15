@@ -26,7 +26,7 @@ When starting to thoroughly clean all the data I encountered another surprising 
 
 
 ### Cleaning
-This following section summarises initial cleaning of the data, which I've done in the motebook data_cleaning.ipynb.
+This following section summarises initial cleaning of the data, which I've done in the notebook data_cleaning.ipynb.
 
 I first had to remove the data for all years except 2019, as the rest was never supposed to be there. I then removed the year variable ("Aar"). The dataset contained 95 boolean values representing 3 questions for the survey. As these three questions were only technical questions regarding the survey I removed all these variables, as well as eight other survey technical variables. 
 
@@ -44,17 +44,21 @@ I made four categories of the types of variables I wanted to do the imputation o
 
 ## Methods
 ### Support Vector Machine
-For the first model I used [scikit learns Support Vector Classification](https://scikit-learn.org/stable/modules/svm.html). The first version I made of the SVM gave an accuracy of 0.34 when doing 5-fold cross validation, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.3089. As seen in Figure \ref{fig:svm}, the model only predicted values 1 and 3 for the entire test set (1 means "Arbeiderpartiet", and 3 means "Høyre"). The reason is that these two values are overrepresented in the dataset compared to the rest. 
+For the first model I used [scikit learns Support Vector Classification](https://scikit-learn.org/stable/modules/svm.html). The first version I made of the SVM gave an accuracy of 0.34 when doing 5-fold cross validation, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.3089. As seen in the first figure below, the model only predicted values 1 and 3 for the entire test set (1 means "Arbeiderpartiet", and 3 means "Høyre"). The reason is that these two values are overrepresented in the dataset compared to the rest. 
 
 I then made a second support vector machine, but this time balancing the data in hopes that the model would be able to predict other categories than 1 and 3 as well. As seen in the figure below, this new balance SVM predicted a much wider range of values/ parties when testing on the test set. However the accuracy was far lower at only 0.19 when doing 5-fold cross validation, with a standard deviation of 0.01, and  0.2278 on the test set.
 
+SVM (not balanced):
+
 ![Correlation matrices of testing Support Vector Machine trained without and with balancing the target data: SVM (not balanced)](/img/cm_svm.jpg)
+
+Balanced SVM:
 
 ![Correlation matrices of testing Support Vector Machine trained without and with balancing the target data: SVM balanced](/img/cm_svm_balanced.jpg)
 
 
 ### Classification tree
-Another simple classification model is the [classification tree](https://scikit-learn.org/stable/modules/tree.html), that can learn simple rules inferred from the features to predict. An aspect of the classification tree that intrigued me is the explainability. The fact that we can see clearly why the model predicted the value that was predicted can be very valuable for analysing complex problems such as political orientation. The classification tree gave an accuracy of 0.21 when doing 5-fold cross validation, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.2406. A visualization of the calculated feature importances can be found in appendix \ref{imp}.
+Another simple classification model is the [classification tree](https://scikit-learn.org/stable/modules/tree.html), that can learn simple rules inferred from the features to predict. An aspect of the classification tree that intrigued me is the explainability. The fact that we can see clearly why the model predicted the value that was predicted can be very valuable for analysing complex problems such as political orientation. The classification tree gave an accuracy of 0.21 when doing 5-fold cross validation, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.2406. 
 
 ### Random forest classifier
 Since my classification tree did not give very satisfactory results, I wanted to try an improvement: the [random forest classifier](https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees). A large benefit of this is that as with the classification tree, it can calculate feature importance. The random forest classifier significantly improved the accuracy compared to the classification tree. As opposed to the classification tree with its accuracy of 0.21 when doing 5-fold cross validation, the random forest classifies gave an accuracy of 0.34, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.3656.
