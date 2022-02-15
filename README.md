@@ -42,7 +42,7 @@ I therefore chose to use multivariate imputation, as this takes all columns into
 
 I made four categories of the types of variables I wanted to do the imputation on: numerical values where 9999 represented “I don’t know”, numerical values where 8 represented “I don’t know”, values of 1 meaning yes or 2 meaning no where 3 represented “I don’t know”, and three categorical values with numerical meaning (that I have chosen to treat as numerical in the models) where number 9, 5 and 9999 respectively represented “I don’t know” in the survey. For all these variable, I first replaces the respective “I don’t know” values with Nan, and then I made a multivariate imputer and transformed all the Nan values. 
 
-## Methods
+## Models
 ### Support Vector Machine
 For the first model I used [scikit learns Support Vector Classification](https://scikit-learn.org/stable/modules/svm.html). The first version I made of the SVM gave an accuracy of 0.34 when doing 5-fold cross validation, with a standard deviation of 0.01. When testing on the test set it has an accuracy of 0.3089. As seen in the first figure below, the model only predicted values 1 and 3 for the entire test set (1 means "Arbeiderpartiet", and 3 means "Høyre"). The reason is that these two values are overrepresented in the dataset compared to the rest. 
 
